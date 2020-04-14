@@ -1,6 +1,6 @@
 local base_dir = "/etc/chasquid/domains"
-local aliases_file = os.getenv("MAIL_ALIASES_FILE") or "aliases.lua"
-local aliases = dofile(aliases_file)
+local alias_file = os.getenv("MAIL_ALIAS_FILE") or "aliases.lua"
+local aliases = dofile(alias_file)
 
 for domain, users in pairs(aliases) do
     os.execute("mkdir -p "..base_dir.."/"..domain)
