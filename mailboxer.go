@@ -15,14 +15,14 @@ func main() {
 	var data []byte
 	var err error
 	args := os.Args[1:]
-	if len(args) < 1 {
-		log.Fatal("Not enough args")
+	if len(args) < 2 {
+		log.Fatal("Not enough args!")
 	}
 	basedir := os.Getenv("MAILDIR_BASE")
 	if basedir == "" {
 		basedir = "/data/mail"
 	}
-	email := strings.Split(args[0], "@")
+	email := strings.Split(args[1], "@")
 	user, domain := email[0], email[1]
 	md := maildir.NewMaildir(basedir + "/" + domain + "/" + user + "/Maildir")
 	data, err = ioutil.ReadAll(os.Stdin)
@@ -33,5 +33,6 @@ func main() {
 		if err != nil {
 			log.Fatal("Failed to save message")
 		}
+		log.Info("Delivered message from " + args[0] + " to " + args[1])
 	}
 }
