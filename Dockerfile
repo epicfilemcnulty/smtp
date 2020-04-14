@@ -14,7 +14,7 @@ RUN go get github.com/amalfra/maildir && go build
 
 FROM alpine:3.11
 
-RUN apk add --no-cache libcap
+RUN apk add --no-cache libcap lua
 COPY --from=builder /go/bin/chasquid /usr/bin/
 RUN /usr/sbin/setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/chasquid
 COPY --from=builder /go/bin/chasquid-util /usr/bin/
