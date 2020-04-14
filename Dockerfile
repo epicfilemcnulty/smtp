@@ -5,6 +5,7 @@ RUN mkdir -p /src/mailboxer
 COPY mailboxer.go /src/mailboxer/main.go
 RUN git clone https://blitiri.com.ar/repos/chasquid /src/chasquid
 WORKDIR /src/chasquid
+RUN git checkout v1.3
 RUN go get -d ./...
 RUN go install ./...
 
