@@ -21,6 +21,8 @@ COPY --from=builder /go/bin/chasquid-util /usr/bin/
 COPY --from=builder /go/bin/smtp-check /usr/bin/
 COPY --from=builder /src/mailboxer /usr/bin/
 RUN mkdir -p /etc/chasquid/domains /etc/chasquid/certs && chown -R mail /etc/chasquid
+COPY generate-alias-files.lua /usr/local/bin/
+COPY entrypoint.sh /
 USER mail
 WORKDIR /etc/chasquid
-ENTRYPOINT ["/usr/bin/chasquid"]
+ENTRYPOINT ["/entrypoint.sh"]
