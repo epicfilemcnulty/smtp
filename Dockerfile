@@ -22,4 +22,5 @@ COPY --from=builder /go/bin/smtp-check /usr/bin/
 COPY --from=builder /src/mailboxer /usr/bin/
 RUN mkdir -p /etc/chasquid/domains /etc/chasquid/certs && chown -R mail /etc/chasquid
 USER mail
+WORKDIR /etc/chasquid
 ENTRYPOINT ["/usr/bin/chasquid"]
