@@ -33,6 +33,6 @@ func main() {
 		if err != nil {
 			log.Fatal("Failed to save message")
 		}
-		log.Info("Delivered message from " + args[0] + " to " + args[1])
+		log.Println("Delivered message from " + args[0] + " to " + args[1])
 	}
 }
