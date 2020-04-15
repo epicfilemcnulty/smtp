@@ -5,8 +5,8 @@ local aliases = dofile(alias_file)
 for domain, users in pairs(aliases) do
     os.execute("mkdir -p "..base_dir.."/"..domain)
     local file = io.open(base_dir.."/"..domain.."/aliases", "w+")
-    for user, a in pairs(users) do
-        for _, alias in ipairs(a) do
+    for user, info in pairs(users) do
+        for _, alias in ipairs(info.aliases) do
             file:write(alias..": "..user.."\n")
         end
     end
